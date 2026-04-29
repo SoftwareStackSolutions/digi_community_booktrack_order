@@ -131,12 +131,12 @@ jobs:
       - name: Tag image
         run: |
           OWNER=$(echo "${GITHUB_REPOSITORY_OWNER}" | tr '[:upper:]' '[:lower:]')
-          docker tag order-service:latest ghcr.io/$OWNER/order-service:latest
+          docker tag order-application:latest ghcr.io/$OWNER/order-application:latest
 
       - name: Push image
         run: |
           OWNER=$(echo "${GITHUB_REPOSITORY_OWNER}" | tr '[:upper:]' '[:lower:]')
-          docker push ghcr.io/$OWNER/order-service:latest
+          docker push ghcr.io/$OWNER/order-application:latest
 
   deploy-to-eks:
     name: Deploy to EKS
