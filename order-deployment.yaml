@@ -13,6 +13,9 @@ spec:
       labels:
         app: order-service
     spec:
+      imagePullSecrets:
+        - name: ghcr-secret   # 👈 ADD THIS
+
       containers:
         - name: order-service
           image: ghcr.io/softwarestacksolutions/order-application:latest
@@ -36,7 +39,6 @@ spec:
                   name: postgres-secret
                   key: POSTGRES_PASSWORD
             - name: POSTGRES_HOST
-              value: "postgres"
+              value: postgres
             - name: POSTGRES_PORT
               value: "5432"
-      restartPolicy: Always
