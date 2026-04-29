@@ -82,6 +82,19 @@ jobs:
           mv order-package.zip artifact-repo/Order/Order-${VERSION}.zip
           cp artifact-repo/Order/Order-${VERSION}.zip artifact-repo/Order/Order-latest.zip
 
+      - name: Cleanup old artifacts (keep last 5)
+        if: steps.hash.outputs.no_change == 'false'
+        run: |
+            cd artifact-repo/Order
+  
+            echo "Before cleanup:"
+            ls -1 Order-v*.zip || true
+  
+            ls -1 Order-v*.zip 2>/dev/null | sort -V | head -n -5 | xargs -r rm -f
+  
+            echo "After cleanup:"
+            ls -1 Order-v*.zip || true
+          
       - name: Commit & Push
         if: steps.hash.outputs.no_change == 'false'
         run: |
