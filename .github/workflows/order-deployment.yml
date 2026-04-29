@@ -126,7 +126,7 @@ jobs:
 
       - name: Build Docker image
         run: |
-          docker build -t order-service:latest ./app
+          docker build -t order-application:latest ./app
 
       - name: Tag image
         run: |
