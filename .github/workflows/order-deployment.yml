@@ -3,7 +3,7 @@ name: Order Service CI Pipeline
 on:
   push:
     branches:
-      - main
+      - development
 
 jobs:
 
